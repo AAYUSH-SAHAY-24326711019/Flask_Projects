@@ -10,3 +10,6 @@ def create_app():
     app.register_blueprint(auth_blueprint)
 
     return app
+
+# Template inheritance can be added to keep things like navigation same
+# on all the pages. implement the navigation.

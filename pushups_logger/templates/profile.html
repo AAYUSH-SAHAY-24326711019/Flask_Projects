@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+    <link rel="stylesheet" href="/static/style.css">
+{% endblock %}
+
+
+    {% block content %}
+<div class="container">
+
+<div class="glass">
+
+<h2>Welcome {{ username }}</h2>
+
+<p>
+Track your pushups here 💪
+</p>
+
+<a href="/logout">
+<button>
+Logout
+</button>
+</a>
+
+</div>
+
+</div>
+{% endblock %}

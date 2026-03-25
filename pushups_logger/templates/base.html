@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="/static/style.css">
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="navbar">
+<a href="{{ url_for('main.index') }}">Logo</a>
+<a href="{{ url_for('main.profile') }}">Profile</a>
+<a href="{{ url_for('auth.login') }}">Login</a>
+<a href="{{ url_for('auth.signup') }}">Signup</a>
+<a href="{{ url_for('auth.logout') }}">Logout</a>
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
