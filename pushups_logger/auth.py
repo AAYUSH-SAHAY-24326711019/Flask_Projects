@@ -23,11 +23,19 @@ def signup_post():
 # ----------------Code for signup end----------------
 
 
+# ----------------Code for Login start----------------
 @auth.route('/login')
 def login():
     # return "This will login the users"
     return render_template('login.html')
+@auth.route('/login',methods=['POST'])
+def login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    print(email,password)
+    return redirect(url_for('main.profile'))
 
+# ----------------Code for Login end----------------
 @auth.route('/logout')
 def logout():
     return "This will logout the users"
