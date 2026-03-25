@@ -2,6 +2,10 @@ import datetime
 
 from flask import Blueprint, render_template,url_for,request,redirect
 
+from werkzeug.security import generate_password_hash,check_password_hash
+from .models import User
+from .import db
+
 auth = Blueprint('auth', __name__)
 
 # ----------------Code for signup start----------------
@@ -12,12 +16,20 @@ def signup():
 
 @auth.route('/signup',methods=['POST'])
 def signup_post():
-    email = request.form['email']
-    name = request.form['username']
-    password = request.form['password']
+    email = request.form.get('email')
+    name = request.form.get('username')
+    password = request.form.get('password')
 
-    print(email,name,password)
+    # print(email,name,password)
+    # ------------------code for the database -------------------start
+    user = User.query.filter_by(email=email).first()
+    if user:
+        print("user already exists")
 
+    new_user = User(email=email,name=name,password=generate_password_hash(password ,method='pbkdf2:sha256'))
+    db.session.add(new_user)
+    db.session.commit()
+    # ------------------code for the database -------------------end
     return redirect(url_for('auth.login'))
 
 # ----------------Code for signup end----------------

@@ -11,3 +11,10 @@ Requirement already satisfied: click>=8.1.3 in c:\users\lenovo\anaconda3\lib\sit
 Requirement already satisfied: blinker>=1.9 in c:\users\lenovo\anaconda3\lib\site-packages (from flask) (1.9.0)
 Requirement already satisfied: colorama in c:\users\lenovo\anaconda3\lib\site-packages (from click>=8.1.3->flask) (0.4.6)
 Requirement already satisfied: MarkupSafe>=2.0 in c:\users\lenovo\anaconda3\lib\site-packages (from Jinja2>=3.1.2->flask) (3.0.2)
+
+for the configuration of the database: open python cmd and enter these.
+>>> from pushups_logger import create_app, db
+>>> app = create_app()
+>>> with app.app_context():
+...     db.create_all()
+...
