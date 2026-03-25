@@ -1,11 +1,26 @@
-from flask import Blueprint, render_template,url_for
+import datetime
+
+from flask import Blueprint, render_template,url_for,request,redirect
 
 auth = Blueprint('auth', __name__)
 
+# ----------------Code for signup start----------------
 @auth.route('/signup')
 def signup():
-    # return "This will signup the users"
+    # return "This will sign up the users"
     return render_template('signup.html')
+
+@auth.route('/signup',methods=['POST'])
+def signup_post():
+    email = request.form['email']
+    name = request.form['username']
+    password = request.form['password']
+
+    print(email,name,password)
+
+    return redirect(url_for('auth.login'))
+
+# ----------------Code for signup end----------------
 
 
 @auth.route('/login')

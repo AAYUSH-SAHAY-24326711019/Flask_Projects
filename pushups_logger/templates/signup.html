@@ -21,11 +21,16 @@
 
 <h2>Create Account</h2>
 
-<form method="POST">
+<form method="POST" action="/signup">
 
 <input type="text"
-placeholder="Username"
+placeholder="Enter your name..."
 name="username"
+required>
+
+    <input type="email"
+placeholder="Enter your email..."
+name="email"
 required>
 
 <input type="password"
