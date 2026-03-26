@@ -65,3 +65,16 @@ def update_workout(workout_id):
 
 # --------------------------------------------------
 #section to update the workout end
+
+#section to delete the workout start
+# --------------------------------------------------
+@main.route("/workout/<int:workout_id>/delete",methods=['GET','POST'])
+@login_required
+def delete_workout(workout_id):
+    workout = Workout.query.get_or_404(workout_id)
+    db.session.delete(workout)
+    db.session.commit()
+    return redirect(url_for('main.user_workouts'))
+
+# --------------------------------------------------
+#section to delete the workout start

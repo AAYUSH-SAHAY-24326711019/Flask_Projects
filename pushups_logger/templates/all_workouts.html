@@ -40,7 +40,7 @@
 <td>{{ workout.comment }}</td>
     <td>
         <a href="#" onclick="openModal({{ workout.id }})">Edit</a>
-        <a href="#">Delete</a>
+        <a href="#" onclick="deleteProcess({{ workout.id }})">Delete</a>
     </td>
 </tr>
 {% endfor %}
@@ -84,15 +84,17 @@ id="updateForm"
 <input
 type="number"
 name="pushups"
+id="inp1"
 placeholder="Count of pushups"
 required>
 
 <input
 type="text"
 name="comment"
+id="inp2"
 placeholder="Workout comments">
 
-<button type="submit">
+<button id="btn1" type="submit">
 
 Update Record
 
@@ -113,8 +115,45 @@ const form = document.getElementById("updateForm");
 
 function openModal(workoutId)
 {
-    form.action = "/workout/" + workoutId+ "/update";
+
+    {#document.getElementById("inp1").style.display="block";#}
+    {#document.getElementById("inp2").style.display="block";#}
+    {#document.getElementById("btn1").innerText="Update";#}
+    {#form.action = "/workout/" + workoutId+ "/update";#}
+    {#modal.style.display = "flex";#}
+
+    document.getElementById("inp1").style.display="block";
+    document.getElementById("inp2").style.display="block";
+
+    document.getElementById("inp1").required = true;
+
+    document.getElementById("btn1").innerText="Update";
+
+    form.action = "/workout/" + workoutId + "/update";
+
     modal.style.display = "flex";
+
+}
+function deleteProcess(workoutId)
+{
+    {#document.getElementById("inp1").style.display="none";#}
+    {#document.getElementById("inp2").style.display="none";#}
+    {#document.getElementById("btn1").innerText="Delete";#}
+    {##}
+    {#form.action = "/workout/" + workoutId+ "/delete";#}
+    {#modal.style.display = "flex";#}
+
+    document.getElementById("inp1").style.display="none";
+    document.getElementById("inp2").style.display="none";
+
+    document.getElementById("inp1").required = false;
+
+    document.getElementById("btn1").innerText="Delete";
+
+    form.action = "/workout/" + workoutId + "/delete";
+
+    modal.style.display = "flex";
+
 }
 
 function closeModal()
