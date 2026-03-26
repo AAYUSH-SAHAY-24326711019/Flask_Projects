@@ -65,4 +65,4 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect('main.index')
+    return render_template('index.html')

@@ -98,3 +98,124 @@ a {
 .navbar a:hover {
     background: rgba(255,255,255,0.15);
 }
+/* table window container */
+
+.table-card {
+
+    width: 850px;
+
+    padding: 30px;
+
+}
+
+
+/* scroll window */
+
+.table-wrapper {
+
+    max-height: 320px;
+
+    overflow-y: auto;
+
+    border-radius: 12px;
+
+}
+
+
+/* table */
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+/* sticky header */
+
+thead th {
+
+    position: sticky;
+
+    top: 0;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(6px);
+
+    z-index: 2;
+
+}
+
+
+/* header */
+
+th {
+
+    padding: 14px;
+
+    text-align: left;
+
+}
+
+
+/* cells */
+
+td {
+
+    padding: 12px;
+
+    background: rgba(255,255,255,0.05);
+
+}
+
+
+/* row hover */
+
+tbody tr:hover td {
+
+    background: rgba(255,255,255,0.12);
+
+}
+
+
+/* action buttons */
+
+td a {
+
+    padding: 4px 10px;
+
+    margin-right: 8px;
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,0.08);
+
+}
+
+
+td a:hover {
+
+    background: rgba(59,130,246,0.4);
+
+}
+
+
+/* scrollbar */
+
+.table-wrapper::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+
+.table-wrapper::-webkit-scrollbar-thumb {
+
+    background: rgba(255,255,255,0.2);
+
+    border-radius: 10px;
+
+}
