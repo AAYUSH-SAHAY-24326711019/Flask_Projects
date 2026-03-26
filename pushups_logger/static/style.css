@@ -219,3 +219,55 @@ td a:hover {
     border-radius: 10px;
 
 }
+
+/* modal overlay */
+
+.modal-overlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0,0,0,0.5);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+}
+
+
+/* modal window */
+
+.modal-window {
+
+    width: 400px;
+
+    padding: 25px;
+
+    position: relative;
+
+}
+
+
+/* close button */
+
+.close-btn {
+
+    position: absolute;
+
+    right: 12px;
+    top: 8px;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+}

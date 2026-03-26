@@ -39,7 +39,7 @@
 <td>{{ workout.pushups }}</td>
 <td>{{ workout.comment }}</td>
     <td>
-        <a href="#">Edit</a>
+        <a href="#" onclick="openModal({{ workout.id }})">Edit</a>
         <a href="#">Delete</a>
     </td>
 </tr>
@@ -56,4 +56,82 @@
 </div>
 </div>
 </div>
+
+<!--
+modal container code
+-->
+
+<!-- modal popup -->
+
+<div id="updateModal" class="modal-overlay">
+
+<div class="glass modal-window">
+
+<span class="close-btn" onclick="closeModal()">✖</span>
+
+<h3>Update Pushups</h3>
+
+<form method="POST"
+id="updateForm"
+>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+<input
+type="number"
+name="pushups"
+placeholder="Count of pushups"
+required>
+
+<input
+type="text"
+name="comment"
+placeholder="Workout comments">
+
+<button type="submit">
+
+Update Record
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!--Modal container code end-->
+
+   <script>
+
+const modal = document.getElementById("updateModal");
+const form = document.getElementById("updateForm");
+
+function openModal(workoutId)
+{
+    form.action = "/workout/" + workoutId+ "/update";
+    modal.style.display = "flex";
+}
+
+function closeModal()
+{
+    modal.style.display = "none";
+}
+
+/* click outside closes modal */
+
+window.onclick = function(event)
+{
+    if (event.target === modal)
+    {
+        closeModal();
+    }
+}
+
+</script>
 {% endblock %}
+

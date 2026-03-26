@@ -48,3 +48,20 @@ def user_workouts():
     workouts = user.workouts
     return render_template('all_workouts.html',workouts=workouts,user=user)
 # -------------Section to see the workouts -------------------end
+
+#section to update the workout start
+# --------------------------------------------------
+@main.route("/workout/<int:workout_id>/update",methods=['GET','POST'])
+@login_required
+def update_workout(workout_id):
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == 'POST':
+        workout.pushups = request.form.get('pushups')
+        workout.comment = request.form.get('comment')
+        db.session.commit()
+        flash('Your workout has been updated!')
+        return redirect(url_for('main.user_workouts'))
+    return render_template('all_workouts.html',workout=workout)
+
+# --------------------------------------------------
+#section to update the workout end
