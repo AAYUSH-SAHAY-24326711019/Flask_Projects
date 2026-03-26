@@ -5,6 +5,7 @@ from flask import Blueprint, render_template,url_for,request,redirect
 from werkzeug.security import generate_password_hash,check_password_hash
 from .models import User
 from .import db
+from flask_login import login_user,logout_user,login_required
 
 auth = Blueprint('auth', __name__)
 
@@ -48,10 +49,20 @@ def login():
 def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
-    print(email,password)
+    # print(email,password)
+    remember= True # there was a checkbox for remember me(see to that later)
+    # ---------------------------code of login login -------------------start
+    user = User.query.filter_by(email=email).first()
+    if not user or not check_password_hash(user.password, password):
+        return redirect(url_for('auth.login'))
+    # ---------------------------code of login login -------------------end
+
+    login_user(user,remember=remember)
     return redirect(url_for('main.profile'))
 
 # ----------------Code for Login end----------------
 @auth.route('/logout')
+@login_required
 def logout():
-    return "This will logout the users"
+    logout_user()
+    return redirect('main.index')
