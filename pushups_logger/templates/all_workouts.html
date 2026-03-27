@@ -8,11 +8,18 @@
 {% block content %}
 
 
-<h2>Welcome {{ name }} 💪</h2>
+
 <div class="container">
 
 <div class="glass table-card">
-
+<h2>Welcome {{ name }} </h2>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
 <h3>Pushups History 📊</h3>
 
 <div class="table-wrapper">
@@ -74,13 +81,7 @@ modal container code
 <form method="POST"
 id="updateForm"
 >
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <div>
-        {{ messages[0] }}
-    </div>
-    {% endif %}
-    {% endwith %}
+
 <input
 type="number"
 name="pushups"

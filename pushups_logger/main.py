@@ -46,7 +46,7 @@ def new_workout_post():
 def user_workouts():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     workouts = user.workouts
-    return render_template('all_workouts.html',workouts=workouts,user=user)
+    return render_template('all_workouts.html',workouts=workouts,user=user,name=current_user.name)
 # -------------Section to see the workouts -------------------end
 
 #section to update the workout start
@@ -72,6 +72,7 @@ def update_workout(workout_id):
 @login_required
 def delete_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
+    flash('Your workout has been Deleted!')
     db.session.delete(workout)
     db.session.commit()
     return redirect(url_for('main.user_workouts'))
